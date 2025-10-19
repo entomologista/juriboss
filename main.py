@@ -392,11 +392,23 @@ def file_preview():
     return HTMLResponse(content=html, status_code=200)
 
 @app.post("/translate")
-def translate(level: str = Form(...), file: UploadFile = File(...)):
-    try:
-        text, warn = extract_text(file)
-    except ValueError as e:
-        return PlainTextResponse(str(e), status_code=400)
+def translate(
+    level: str = Form(...),
+    file: UploadFile = File(None),
+    text_input: str = Form(None)
+):
+    # prioriza texto colado; se vazio, usa arquivo
+    if text_input and text_input.strip():
+        text = text_input.strip()
+        warn = ""
+    else:
+        if file is None:
+            return PlainTextResponse("Envie um arquivo ou cole o texto.", status_code=400)
+        try:
+            text, warn = extract_text(file)
+        except ValueError as e:
+            return PlainTextResponse(str(e), status_code=400)
+
     if warn:
         return PlainTextResponse(warn, status_code=422)
 
@@ -431,6 +443,7 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
 
 
