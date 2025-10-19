@@ -2,92 +2,178 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>JuRiboss — Tradução do Juridiquês</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>JuRiboss — Tradutor Jurídico Simplificado</title>
   <style>
     :root{
-      --bg:#0f172a;        /* slate-900 */
-      --card:#111827;      /* gray-900 */
-      --muted:#94a3b8;     /* slate-400 */
-      --text:#e5e7eb;      /* gray-200 */
-      --brand:#6366f1;     /* indigo-500 */
-      --brand-2:#22d3ee;   /* cyan-400 */
-      --stroke:#1f2937;    /* gray-800 */
-      --ok:#16a34a;        /* green-600 */
-      --warn:#f59e0b;      /* amber-500 */
+      --bg1:#1b1e2a; /* fundo base */
+      --bg2:#0f172a; /* card fundo */
+      --ink:#111827; /* texto escuro em cards claros */
+      --text:#0f172a; /* texto escuro */
+      --muted:#6b7280; /* cinza */
+      --white:#ffffff;
+      --brand1:#0ea5e9; /* azul */
+      --brand2:#2563eb; /* azul escuro */
+      --accent:#f97316; /* laranja */
+      --stroke:#e5e7eb; /* borda clara */
+      --shadow:0 10px 30px rgba(15,23,42,.15);
     }
     *{box-sizing:border-box}
     body{
-      margin:0; background: radial-gradient(80vw 60vh at 20% -10%, rgba(34,211,238,.12), transparent 60%),
-                           radial-gradient(60vw 50vh at 120% 10%, rgba(99,102,241,.12), transparent 60%),
-                           var(--bg);
-      color:var(--text); font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background:
+        radial-gradient(1000px 600px at -10% -10%, #1e293b 0%, rgba(30,41,59,0) 60%),
+        radial-gradient(1000px 600px at 110% 20%, #7c3aed 0%, rgba(124,58,237,0) 60%),
+        linear-gradient(120deg, #111827 0%, #1f2937 50%, #0f172a 100%);
+      min-height:100vh;
+      color:#111827;
     }
-    .wrap{max-width:980px;margin:32px auto;padding:0 16px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    .brand{font-size:28px;font-weight:800;letter-spacing:.3px}
-    .tag{color:var(--muted);font-size:14px}
-    .grid{display:grid;gap:16px}
-    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
+    .wrap{max-width:1180px; margin:0 auto; padding:24px 16px 40px}
+
+    /* Banner */
+    .hero{
+      background: linear-gradient(90deg, var(--brand2), var(--brand1));
+      color:var(--white);
+      border-radius:24px;
+      box-shadow: var(--shadow);
+      padding:26px 28px;
+      display:flex; align-items:center; gap:16px;
+    }
+    .hero .icon{
+      width:46px; height:46px; flex:0 0 auto;
+      background: rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.35);
+      display:grid; place-items:center; border-radius:14px;
+    }
+    .hero h1{
+      font-size:28px; line-height:1.2; margin:0 0 4px 0; font-weight:800;
+      letter-spacing:.3px;
+    }
+    .hero p{margin:0; opacity:.95}
+
+    /* Layout principal */
+    .grid{display:grid; gap:20px; margin-top:20px}
+    @media(min-width:1000px){ .grid{grid-template-columns:1.1fr .9fr} }
+
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-      border:1px solid var(--stroke); border-radius:16px; padding:18px;
-      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+      background:#fff; border:1px solid var(--stroke); border-radius:18px;
+      box-shadow: var(--shadow); padding:18px 18px 20px;
     }
-    h2{margin:0 0 8px 0;font-size:18px}
-    label{display:block;margin:8px 0 6px;color:var(--muted)}
+    h2{margin:0 0 10px 0; color:#0f172a}
+
+    /* Abas */
+    .tabs{display:flex; gap:18px; border-bottom:1px solid var(--stroke); margin:4px 0 12px}
+    .tab{
+      padding:10px 2px 12px; font-weight:600; color:#64748b; cursor:pointer;
+      border-bottom:3px solid transparent; user-select:none;
+    }
+    .tab.active{color:#111827; border-bottom-color:var(--brand1)}
+    .hidden{display:none}
+
+    /* Inputs */
+    label{display:block; margin:8px 0 6px; color:#374151; font-weight:600}
     textarea, input[type="file"], select, button{
-      width:100%; font:inherit; color:var(--text);
-      background:#0b1220; border:1px solid var(--stroke); border-radius:12px;
-      padding:12px 12px;
+      width:100%; font:inherit; border-radius:12px; border:1px solid #d1d5db; background:#fff; color:#111827;
     }
-    textarea{min-height:160px; resize:vertical}
-    .row{display:flex;gap:12px;align-items:center}
+    textarea{min-height:170px; padding:12px 12px; resize:vertical; outline:0}
+    textarea::placeholder{color:#9ca3af}
+    .file{
+      padding:12px; border:2px dashed #d1d5db; background:#f9fafb;
+    }
+    .row{display:flex; gap:12px; align-items:flex-end}
     .row > *{flex:1}
-    .hint{color:var(--muted);font-size:13px;margin-top:6px}
+
+    /* Botões */
     .btn{
-      background:linear-gradient(90deg, var(--brand), var(--brand-2));
-      border:none; cursor:pointer; font-weight:600; letter-spacing:.2px;
-      box-shadow:0 10px 25px rgba(79,70,229,.25);
-      transition: filter .15s ease, transform .02s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background: linear-gradient(90deg, var(--brand2), var(--brand1));
+      color:#fff; padding:12px 16px; border:0; border-radius:14px; cursor:pointer;
+      font-weight:700; letter-spacing:.2px; box-shadow:0 8px 22px rgba(2,132,199,.25);
+      transition: transform .02s ease, filter .15s ease;
     }
-    .btn:disabled{opacity:.6; cursor:not-allowed; filter:grayscale(.2)}
-    .btn:active{transform:translateY(1px)}
-    pre{
-      white-space:pre-wrap; word-wrap:break-word; margin:0;
-      background:#0b1220; border:1px solid var(--stroke); border-radius:12px; padding:14px;
-      min-height:220px; max-height:420px; overflow:auto;
+    .btn:active{transform: translateY(1px)}
+    .btn:disabled{opacity:.65; filter:saturate(.3); cursor:not-allowed}
+
+    .secondary{
+      background: #111827; color:#fff; box-shadow:0 8px 22px rgba(17,24,39,.25);
     }
-    .pill{display:inline-block; padding:4px 10px; border:1px solid var(--stroke); border-radius:999px; color:var(--muted); font-size:12px}
-    footer{color:var(--muted);font-size:12px;margin-top:14px}
-    .ok{color:var(--ok)} .warn{color:var(--warn)}
-    .or{color:var(--muted);text-align:center;margin:8px 0}
+
+    /* Resultado */
+    .result{
+      background:#f5f7fb; border:1px solid #e5e7eb;
+      border-radius:14px; padding:14px; min-height:260px; max-height:520px; overflow:auto;
+      color:#0f172a; white-space:pre-wrap; word-wrap:break-word;
+    }
+    .hint{color:#6b7280; font-size:13px; margin-top:8px}
+    .foot-note{color:#6b7280; font-size:12px; margin-top:10px}
+
+    /* Features */
+    .features{display:grid; gap:16px; margin-top:22px}
+    @media(min-width:900px){ .features{grid-template-columns:repeat(4,1fr)} }
+    .feature{
+      background:#fff; border:1px solid var(--stroke); border-radius:16px; padding:16px;
+      box-shadow: var(--shadow); text-align:center;
+    }
+    .feature h4{margin:8px 0 6px}
+    .feature p{margin:0; color:#6b7280; font-size:14px}
+
+    /* Footer */
+    footer{margin:22px 0 6px; text-align:center; color:#6b7280; font-size:12px}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div>
-        <div class="brand">JuRiboss</div>
-        <div class="tag">Líder em tradução do juridiquês • versão com IA + fallback</div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="icon" aria-hidden="true">
+        <!-- balança -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v3M7 9l5-3 5 3"/>
+          <path d="M6 9l-3 6a4 4 0 0 0 8 0l-3-6M16 9l-3 6a4 4 0 0 0 8 0l-3-6"/>
+          <path d="M12 6v12M8 21h8"/>
+        </svg>
       </div>
-      <span class="pill">MVP</span>
-    </header>
+      <div>
+        <h1>Tradutor Jurídico Simplificado</h1>
+        <p>Transforme textos jurídicos complexos em linguagem simples e acessível</p>
+      </div>
+    </div>
 
+    <!-- GRID -->
     <div class="grid">
-      <!-- Coluna esquerda: entrada e nível -->
+      <!-- COL ESQUERDA -->
       <section class="card">
-        <h2>Entrada</h2>
+        <h2>Área de Entrada</h2>
 
-        <label for="textInput">Cole o texto a traduzir</label>
-        <textarea id="textInput" placeholder="Cole aqui o conteúdo (opcional — você também pode enviar um arquivo abaixo)"></textarea>
+        <!-- Abas -->
+        <div class="tabs" role="tablist" aria-label="Modo de entrada">
+          <div id="tabText" class="tab active" role="tab" aria-selected="true" aria-controls="paneText">Digitar Texto</div>
+          <div id="tabFile" class="tab" role="tab" aria-selected="false" aria-controls="paneFile">Enviar Arquivo</div>
+        </div>
 
-        <div class="or">— ou —</div>
+        <!-- Pane: Digitar -->
+        <div id="paneText" role="tabpanel" aria-labelledby="tabText">
+          <label for="textInput">Cole ou digite aqui o texto jurídico que deseja traduzir…</label>
+          <textarea id="textInput" placeholder="Ex.: &quot;Destarte, requer-se o acolhimento do pedido, nos termos do art. 421 do CC...&quot;"></textarea>
+          <button id="btnExample" class="btn secondary" style="margin-top:10px">
+            <!-- lápis -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+            Carregar exemplo
+          </button>
+        </div>
 
-        <label for="fileInput">Envie um arquivo (.txt, .docx ou .pdf pesquisável)</label>
-        <input id="fileInput" type="file" accept=".txt,.docx,.pdf"/>
+        <!-- Pane: Arquivo -->
+        <div id="paneFile" class="hidden" role="tabpanel" aria-labelledby="tabFile">
+          <label for="fileInput">Selecione um arquivo (.txt, .docx ou .pdf pesquisável)</label>
+          <input id="fileInput" class="file" type="file" accept=".txt,.docx,.pdf"/>
+          <div class="hint">Se o PDF for escaneado (imagem), aplique OCR antes.</div>
+        </div>
 
-        <div class="row" style="margin-top:12px">
+        <div class="row" style="margin-top:14px">
           <div>
             <label for="level">Nível de linguagem</label>
             <select id="level">
@@ -96,19 +182,25 @@
               <option value="superior">Ensino superior completo</option>
             </select>
           </div>
-          <div style="align-self:flex-end">
-            <button id="btnTranslate" class="btn">Traduzir</button>
+          <div>
+            <button id="btnTranslate" class="btn" title="Traduzir agora">
+              <!-- A ↔ B -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 7h14M5 17h14M10 7l-3 3 3 3M14 17l3-3-3-3"/>
+              </svg>
+              Traduzir Texto
+            </button>
           </div>
         </div>
-        <div class="hint">Dica: se o PDF for escaneado (imagem), use OCR antes.</div>
+
       </section>
 
-      <!-- Coluna direita: resultado e download -->
+      <!-- COL DIREITA -->
       <section class="card">
-        <h2>Resultado</h2>
-        <pre id="resultBox" aria-live="polite">(a tradução aparecerá aqui)</pre>
+        <h2>Texto Simplificado</h2>
+        <div id="resultBox" class="result" aria-live="polite">O texto traduzido aparecerá aqui…</div>
 
-        <div class="row" style="margin-top:12px">
+        <div class="row" style="margin-top:14px">
           <div>
             <label for="fmt">Formato</label>
             <select id="fmt">
@@ -116,15 +208,46 @@
               <option value="pdf">PDF</option>
             </select>
           </div>
-          <div style="align-self:flex-end">
-            <button id="btnDownload" class="btn" disabled>Baixar tradução</button>
+          <div>
+            <button id="btnDownload" class="btn" disabled>
+              <!-- download -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <path d="M7 10l5 5 5-5"/>
+                <path d="M12 15V3"/>
+              </svg>
+              Baixar tradução
+            </button>
           </div>
         </div>
-        <footer class="hint">Aviso: este conteúdo não substitui orientação jurídica profissional.</footer>
+        <div class="foot-note">Aviso: este conteúdo não substitui orientação jurídica profissional.</div>
       </section>
     </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <h4>Jargões Jurídicos</h4>
+        <p>Traduzimos termos como “data venia” e “destarte” para linguagem simples.</p>
+      </div>
+      <div class="feature">
+        <h4>Múltiplos Formatos</h4>
+        <p>Funciona com PDF pesquisável, Word, TXT e texto colado diretamente.</p>
+      </div>
+      <div class="feature">
+        <h4>Privacidade</h4>
+        <p>Seus documentos não são armazenados no servidor.</p>
+      </div>
+      <div class="feature">
+        <h4>Acessível</h4>
+        <p>Níveis de leitura: criança, ensino médio e superior.</p>
+      </div>
+    </div>
+
+    <footer>© JuRiboss — Tradutor Jurídico Simplificado</footer>
   </div>
 
+  <!-- Form oculto para download -->
   <form id="hiddenDownload" method="post" action="/download" target="_blank" style="display:none">
     <input name="fmt" id="fmtHidden">
     <input name="level" id="levelHidden">
@@ -132,61 +255,83 @@
   </form>
 
   <script>
-    const el = (id)=>document.getElementById(id);
-    const textInput = el('textInput');
-    const fileInput = el('fileInput');
-    const levelSel = el('level');
-    const btnTranslate = el('btnTranslate');
-    const resultBox = el('resultBox');
-    const btnDownload = el('btnDownload');
-    const fmtSel = el('fmt');
+    // util
+    const $ = (id)=>document.getElementById(id);
 
-    const formHidden = el('hiddenDownload');
-    const fmtHidden = el('fmtHidden');
-    const levelHidden = el('levelHidden');
-    const textHidden = el('textHidden');
+    // Abas
+    const tabText = $('tabText'), tabFile = $('tabFile');
+    const paneText = $('paneText'), paneFile = $('paneFile');
+    tabText.addEventListener('click', () => {
+      tabText.classList.add('active'); tabFile.classList.remove('active');
+      paneText.classList.remove('hidden'); paneFile.classList.add('hidden');
+    });
+    tabFile.addEventListener('click', () => {
+      tabFile.classList.add('active'); tabText.classList.remove('active');
+      paneFile.classList.remove('hidden'); paneText.classList.add('hidden');
+    });
+
+    // Controles
+    const textInput = $('textInput');
+    const fileInput = $('fileInput');
+    const levelSel = $('level');
+    const resultBox = $('resultBox');
+    const btnExample = $('btnExample');
+    const btnTranslate = $('btnTranslate');
+    const btnDownload = $('btnDownload');
+    const fmtSel = $('fmt');
+
+    // Form oculto p/ download
+    const formHidden = $('hiddenDownload');
+    const fmtHidden = $('fmtHidden');
+    const levelHidden = $('levelHidden');
+    const textHidden = $('textHidden');
 
     let lastResult = "";
 
-    async function translate() {
+    btnExample.addEventListener('click', () => {
+      textInput.value = "Destarte, em que pese o contrato apresentado, requer-se, com fulcro no art. 421 do CC, o acolhimento do pedido.";
+    });
+
+    async function translate(){
       btnTranslate.disabled = true;
-      btnTranslate.textContent = 'Traduzindo...';
+      btnTranslate.textContent = "Traduzindo...";
       btnDownload.disabled = true;
-      resultBox.textContent = 'Processando...';
+      resultBox.textContent = "Processando…";
 
       const fd = new FormData();
       fd.append('level', levelSel.value);
 
-      const pasted = (textInput.value || '').trim();
-      const file = fileInput.files[0];
+      const pasted = (textInput.value || "").trim();
+      const file = fileInput?.files?.[0];
 
-      if (pasted.length > 0) {
+      if (tabText.classList.contains('active')) {
+        if (!pasted){ resultBox.textContent = "Cole um texto ou use a aba Enviar Arquivo."; resetBtn(); return; }
         fd.append('text_input', pasted);
-      } else if (file) {
-        fd.append('file', file);
       } else {
-        resultBox.textContent = 'Por favor, cole um texto ou envie um arquivo.';
-        btnTranslate.disabled = false;
-        btnTranslate.textContent = 'Traduzir';
-        return;
+        if (!file){ resultBox.textContent = "Selecione um arquivo (.txt, .docx, .pdf pesquisável)."; resetBtn(); return; }
+        fd.append('file', file);
       }
 
-      try {
+      try{
         const resp = await fetch('/translate', { method:'POST', body: fd });
         const text = await resp.text();
         lastResult = text;
         resultBox.textContent = text;
         btnDownload.disabled = false;
-      } catch(e) {
-        resultBox.textContent = 'Erro ao traduzir. Verifique sua conexão.';
-      } finally {
-        btnTranslate.disabled = false;
-        btnTranslate.textContent = 'Traduzir';
+      }catch(e){
+        resultBox.textContent = "Erro ao traduzir. Verifique sua conexão.";
+      }finally{
+        resetBtn();
       }
     }
 
-    function downloadNow(){
-      if(!lastResult){ return; }
+    function resetBtn(){
+      btnTranslate.disabled = false;
+      btnTranslate.textContent = "Traduzir Texto";
+    }
+
+    function doDownload(){
+      if(!lastResult) return;
       fmtHidden.value = fmtSel.value;
       levelHidden.value = levelSel.value;
       textHidden.value = lastResult;
@@ -194,7 +339,7 @@
     }
 
     btnTranslate.addEventListener('click', translate);
-    btnDownload.addEventListener('click', downloadNow);
+    btnDownload.addEventListener('click', doDownload);
   </script>
 </body>
 </html>
