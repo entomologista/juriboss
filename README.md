@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://github.com/entomologista/juriboss/blob/main/Banner JuRiBoss.png" width="100%" alt="JuRiboss — Líder em Tradução do Juridiquês">
+</p>
+
+
 # 🏛️ JuRiboss — Líder em Tradução do Juridiquês
 
 **JuRiboss** é um sistema eletrônico de acesso público criado para **traduzir textos jurídicos complexos ("juridiquês") em linguagem clara e acessível ao cidadão comum**.  
