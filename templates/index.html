@@ -2,53 +2,199 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8"/>
-  <title>JuRiboss - MVP (IA)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>JuRiboss — Tradução do Juridiquês</title>
   <style>
-    body{font-family:system-ui;max-width:800px;margin:24px auto;padding:0 16px;line-height:1.5}
-    h1{margin-bottom:8px}
-    .card{border:1px solid #ddd;border-radius:12px;padding:16px;margin:12px 0}
-    label{display:block;margin:8px 0 4px}
-    textarea{width:100%;height:240px}
-    button{padding:10px 16px;border-radius:10px;border:1px solid #444;cursor:pointer}
+    :root{
+      --bg:#0f172a;        /* slate-900 */
+      --card:#111827;      /* gray-900 */
+      --muted:#94a3b8;     /* slate-400 */
+      --text:#e5e7eb;      /* gray-200 */
+      --brand:#6366f1;     /* indigo-500 */
+      --brand-2:#22d3ee;   /* cyan-400 */
+      --stroke:#1f2937;    /* gray-800 */
+      --ok:#16a34a;        /* green-600 */
+      --warn:#f59e0b;      /* amber-500 */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background: radial-gradient(80vw 60vh at 20% -10%, rgba(34,211,238,.12), transparent 60%),
+                           radial-gradient(60vw 50vh at 120% 10%, rgba(99,102,241,.12), transparent 60%),
+                           var(--bg);
+      color:var(--text); font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+    .wrap{max-width:980px;margin:32px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{font-size:28px;font-weight:800;letter-spacing:.3px}
+    .tag{color:var(--muted);font-size:14px}
+    .grid{display:grid;gap:16px}
+    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid var(--stroke); border-radius:16px; padding:18px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+    }
+    h2{margin:0 0 8px 0;font-size:18px}
+    label{display:block;margin:8px 0 6px;color:var(--muted)}
+    textarea, input[type="file"], select, button{
+      width:100%; font:inherit; color:var(--text);
+      background:#0b1220; border:1px solid var(--stroke); border-radius:12px;
+      padding:12px 12px;
+    }
+    textarea{min-height:160px; resize:vertical}
+    .row{display:flex;gap:12px;align-items:center}
+    .row > *{flex:1}
+    .hint{color:var(--muted);font-size:13px;margin-top:6px}
+    .btn{
+      background:linear-gradient(90deg, var(--brand), var(--brand-2));
+      border:none; cursor:pointer; font-weight:600; letter-spacing:.2px;
+      box-shadow:0 10px 25px rgba(79,70,229,.25);
+      transition: filter .15s ease, transform .02s ease;
+    }
+    .btn:disabled{opacity:.6; cursor:not-allowed; filter:grayscale(.2)}
+    .btn:active{transform:translateY(1px)}
+    pre{
+      white-space:pre-wrap; word-wrap:break-word; margin:0;
+      background:#0b1220; border:1px solid var(--stroke); border-radius:12px; padding:14px;
+      min-height:220px; max-height:420px; overflow:auto;
+    }
+    .pill{display:inline-block; padding:4px 10px; border:1px solid var(--stroke); border-radius:999px; color:var(--muted); font-size:12px}
+    footer{color:var(--muted);font-size:12px;margin-top:14px}
+    .ok{color:var(--ok)} .warn{color:var(--warn)}
+    .or{color:var(--muted);text-align:center;margin:8px 0}
   </style>
 </head>
 <body>
-  <h1>JuRiboss</h1>
-  <p>Líder em tradução do juridiquês • versão com IA</p>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="brand">JuRiboss</div>
+        <div class="tag">Líder em tradução do juridiquês • versão com IA + fallback</div>
+      </div>
+      <span class="pill">MVP</span>
+    </header>
 
-  <div class="card">
-    <form method="post" action="/translate" enctype="multipart/form-data" target="resultFrame">
-      <label>Arquivo (.txt, .docx, .pdf não escaneado)</label>
-      <input type="file" name="file" required>
-      <label>Nível</label>
-      <select name="level" required>
-        <option value="10">Criança de 10 anos</option>
-        <option value="medio">Ensino médio completo</option>
-        <option value="superior">Ensino superior completo</option>
-      </select>
-      <button type="submit">Traduzir (IA)</button>
-    </form>
+    <div class="grid">
+      <!-- Coluna esquerda: entrada e nível -->
+      <section class="card">
+        <h2>Entrada</h2>
+
+        <label for="textInput">Cole o texto a traduzir</label>
+        <textarea id="textInput" placeholder="Cole aqui o conteúdo (opcional — você também pode enviar um arquivo abaixo)"></textarea>
+
+        <div class="or">— ou —</div>
+
+        <label for="fileInput">Envie um arquivo (.txt, .docx ou .pdf pesquisável)</label>
+        <input id="fileInput" type="file" accept=".txt,.docx,.pdf"/>
+
+        <div class="row" style="margin-top:12px">
+          <div>
+            <label for="level">Nível de linguagem</label>
+            <select id="level">
+              <option value="10">Criança de 10 anos</option>
+              <option value="medio" selected>Ensino médio completo</option>
+              <option value="superior">Ensino superior completo</option>
+            </select>
+          </div>
+          <div style="align-self:flex-end">
+            <button id="btnTranslate" class="btn">Traduzir</button>
+          </div>
+        </div>
+        <div class="hint">Dica: se o PDF for escaneado (imagem), use OCR antes.</div>
+      </section>
+
+      <!-- Coluna direita: resultado e download -->
+      <section class="card">
+        <h2>Resultado</h2>
+        <pre id="resultBox" aria-live="polite">(a tradução aparecerá aqui)</pre>
+
+        <div class="row" style="margin-top:12px">
+          <div>
+            <label for="fmt">Formato</label>
+            <select id="fmt">
+              <option value="docx">DOCX</option>
+              <option value="pdf">PDF</option>
+            </select>
+          </div>
+          <div style="align-self:flex-end">
+            <button id="btnDownload" class="btn" disabled>Baixar tradução</button>
+          </div>
+        </div>
+        <footer class="hint">Aviso: este conteúdo não substitui orientação jurídica profissional.</footer>
+      </section>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Resultado</h3>
-    <iframe name="resultFrame" style="width:100%;height:360px;border:1px solid #ddd;border-radius:8px"></iframe>
-  </div>
+  <form id="hiddenDownload" method="post" action="/download" target="_blank" style="display:none">
+    <input name="fmt" id="fmtHidden">
+    <input name="level" id="levelHidden">
+    <textarea name="text" id="textHidden"></textarea>
+  </form>
 
-  <div class="card">
-    <h3>Baixar</h3>
-    <form method="post" action="/download" target="_blank">
-      <label>Formato</label>
-      <select name="fmt" required>
-        <option value="docx">DOCX</option>
-        <option value="pdf">PDF</option>
-      </select>
-      <label>Cole aqui o texto traduzido</label>
-      <textarea name="text"></textarea>
-      <input type="hidden" name="level" value="medio">
-      <button type="submit">Baixar arquivo</button>
-    </form>
-  </div>
+  <script>
+    const el = (id)=>document.getElementById(id);
+    const textInput = el('textInput');
+    const fileInput = el('fileInput');
+    const levelSel = el('level');
+    const btnTranslate = el('btnTranslate');
+    const resultBox = el('resultBox');
+    const btnDownload = el('btnDownload');
+    const fmtSel = el('fmt');
+
+    const formHidden = el('hiddenDownload');
+    const fmtHidden = el('fmtHidden');
+    const levelHidden = el('levelHidden');
+    const textHidden = el('textHidden');
+
+    let lastResult = "";
+
+    async function translate() {
+      btnTranslate.disabled = true;
+      btnTranslate.textContent = 'Traduzindo...';
+      btnDownload.disabled = true;
+      resultBox.textContent = 'Processando...';
+
+      const fd = new FormData();
+      fd.append('level', levelSel.value);
+
+      const pasted = (textInput.value || '').trim();
+      const file = fileInput.files[0];
+
+      if (pasted.length > 0) {
+        fd.append('text_input', pasted);
+      } else if (file) {
+        fd.append('file', file);
+      } else {
+        resultBox.textContent = 'Por favor, cole um texto ou envie um arquivo.';
+        btnTranslate.disabled = false;
+        btnTranslate.textContent = 'Traduzir';
+        return;
+      }
+
+      try {
+        const resp = await fetch('/translate', { method:'POST', body: fd });
+        const text = await resp.text();
+        lastResult = text;
+        resultBox.textContent = text;
+        btnDownload.disabled = false;
+      } catch(e) {
+        resultBox.textContent = 'Erro ao traduzir. Verifique sua conexão.';
+      } finally {
+        btnTranslate.disabled = false;
+        btnTranslate.textContent = 'Traduzir';
+      }
+    }
+
+    function downloadNow(){
+      if(!lastResult){ return; }
+      fmtHidden.value = fmtSel.value;
+      levelHidden.value = levelSel.value;
+      textHidden.value = lastResult;
+      formHidden.submit();
+    }
+
+    btnTranslate.addEventListener('click', translate);
+    btnDownload.addEventListener('click', downloadNow);
+  </script>
 </body>
 </html>
