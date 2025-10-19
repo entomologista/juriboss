@@ -15,7 +15,7 @@ templates = Jinja2Templates(directory="templates")
 
 # ---------------- IA Config ----------------
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5")
 OPENAI_URL = os.getenv("OPENAI_URL", "https://api.openai.com/v1/chat/completions")
 
 SYSTEM_PROMPT_BASE = (
@@ -431,4 +431,5 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
