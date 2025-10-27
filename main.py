@@ -13,6 +13,11 @@ from reportlab.pdfgen import canvas
 app = FastAPI(title="JuRiboss - MVP v4 (IA + Fallback)", version="0.4")
 templates = Jinja2Templates(directory="templates")
 
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/static", StaticFiles(directory="templates"), name="static")
+
+
 # ---------------- IA Config ----------------
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
@@ -443,6 +448,7 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
 
 
