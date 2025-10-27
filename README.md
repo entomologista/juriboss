@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/entomologista/juriboss/blob/main/Banner JuRiBoss.png" width="100%" alt="JuRiboss — Líder em Tradução do Juridiquês">
+  <img src="https://github.com/entomologista/juriboss/blob/main/Banner_juriboss.png" width="100%" alt="JuRiboss — Líder em Tradução do Juridiquês">
 </p>
 
 
