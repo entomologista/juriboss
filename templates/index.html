@@ -6,192 +6,137 @@
   <title>JuRiboss — Tradutor Jurídico Simplificado</title>
   <style>
     :root{
-      --bg1:#1b1e2a; /* fundo base */
-      --bg2:#0f172a; /* card fundo */
-      --ink:#111827; /* texto escuro em cards claros */
-      --text:#0f172a; /* texto escuro */
-      --muted:#6b7280; /* cinza */
+      --text:#0f172a;
+      --muted:#6b7280;
       --white:#ffffff;
-      --brand1:#0ea5e9; /* azul */
-      --brand2:#2563eb; /* azul escuro */
-      --accent:#f97316; /* laranja */
-      --stroke:#e5e7eb; /* borda clara */
+      --brand1:#0ea5e9;
+      --brand2:#2563eb;
+      --stroke:#e5e7eb;
       --shadow:0 10px 30px rgba(15,23,42,.15);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
       background:
         radial-gradient(1000px 600px at -10% -10%, #1e293b 0%, rgba(30,41,59,0) 60%),
         radial-gradient(1000px 600px at 110% 20%, #7c3aed 0%, rgba(124,58,237,0) 60%),
         linear-gradient(120deg, #111827 0%, #1f2937 50%, #0f172a 100%);
       min-height:100vh;
       color:#111827;
-      
-      <!-- Banner full-width -->
-<div style="width:100%;overflow:hidden;background:#0f172a;box-shadow:0 6px 32px rgba(0,0,0,.4);">
-  <img src="/static/banner-juriboss.png"
-       alt="JuRiboss — Líder em Tradução do Juridiquês"
-       style="width:100%;height:auto;display:block;object-fit:cover;max-height:380px;">
-</div>
     }
     .wrap{max-width:1180px; margin:0 auto; padding:24px 16px 40px}
 
-    /* Banner */
-    .hero{
-      background: linear-gradient(90deg, var(--brand2), var(--brand1));
-      color:var(--white);
-      border-radius:24px;
-      box-shadow: var(--shadow);
-      padding:26px 28px;
-      display:flex; align-items:center; gap:16px;
+    /* ======= HEADER (logos + banner) ======= */
+    .header{
+      width:100%;
+      background:linear-gradient(180deg,#0f172a 0%,#1e293b 100%);
+      padding:18px 0 0;
+      box-shadow:0 4px 20px rgba(0,0,0,.35);
     }
-    .hero .icon{
-      width:46px; height:46px; flex:0 0 auto;
-      background: rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.35);
-      display:grid; place-items:center; border-radius:14px;
+    .logos{
+      max-width:1180px; margin:0 auto 10px; padding:0 16px;
+      display:flex; justify-content:center; align-items:center; gap:52px; flex-wrap:wrap;
     }
-    .hero h1{
-      font-size:28px; line-height:1.2; margin:0 0 4px 0; font-weight:800;
-      letter-spacing:.3px;
+    .logo-dir{ height:60px; max-width:240px; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
+    .logo-nupraj{ height:62px; max-width:260px; object-fit:contain; filter:drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
+    .banner{ width:100%; overflow:hidden; }
+    .banner img{ width:100%; height:auto; display:block; max-height:340px; object-fit:cover; border-radius:0 }
+
+    /* ======= GRID PRINCIPAL ======= */
+    .grid{
+      display:grid; gap:20px; margin-top:24px; justify-content:center; grid-template-columns:1fr;
     }
-    .hero p{margin:0; opacity:.95}
-
-    /* Layout principal */
-.grid {
-  display: grid;
-  gap: 20px;
-  margin-top: 24px;
-  justify-content: center;           /* centraliza */
-  grid-template-columns: 1fr;        /* padrão mobile: uma coluna */
-}
-
-@media (min-width: 1000px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;   /* colunas iguais */
-    max-width: 1180px;                /* igual ao .wrap e à barra superior */
-    margin: 24px auto 0;              /* cria espaço abaixo da barra azul */
-  }
-}
-
-.card {
-  background: #fff;
-  border: 1px solid var(--stroke);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 18px 18px 20px;
-  height: 100%;                      /* mantém mesma altura dentro da linha */
-}
+    @media (min-width:1000px){
+      .grid{ grid-template-columns:1fr 1fr; max-width:1180px; margin:24px auto 0; }
+    }
 
     .card{
       background:#fff; border:1px solid var(--stroke); border-radius:18px;
-      box-shadow: var(--shadow); padding:18px 18px 20px;
+      box-shadow:var(--shadow); padding:18px 18px 20px; height:100%;
     }
     h2{margin:0 0 10px 0; color:#0f172a}
 
     /* Abas */
     .tabs{display:flex; gap:18px; border-bottom:1px solid var(--stroke); margin:4px 0 12px}
-    .tab{
-      padding:10px 2px 12px; font-weight:600; color:#64748b; cursor:pointer;
-      border-bottom:3px solid transparent; user-select:none;
-    }
-    .tab.active{color:#111827; border-bottom-color:var(--brand1)}
+    .tab{ padding:10px 2px 12px; font-weight:600; color:#64748b; cursor:pointer; border-bottom:3px solid transparent; user-select:none;}
+    .tab.active{ color:#111827; border-bottom-color:var(--brand1) }
     .hidden{display:none}
 
     /* Inputs */
     label{display:block; margin:8px 0 6px; color:#374151; font-weight:600}
-    textarea, input[type="file"], select, button{
-      width:100%; font:inherit; border-radius:12px; border:1px solid #d1d5db; background:#fff; color:#111827;
-    }
-    textarea{min-height:170px; padding:12px 12px; resize:vertical; outline:0}
-    textarea::placeholder{color:#9ca3af}
-    .file{
-      padding:12px; border:2px dashed #d1d5db; background:#f9fafb;
-    }
-    .row{display:flex; gap:12px; align-items:flex-end}
-    .row > *{flex:1}
+    textarea,input[type="file"],select,button{ width:100%; font:inherit; border-radius:12px; border:1px solid #d1d5db; background:#fff; color:#111827;}
+    textarea{ min-height:170px; padding:12px 12px; resize:vertical; outline:0 }
+    textarea::placeholder{ color:#9ca3af }
+    .file{ padding:12px; border:2px dashed #d1d5db; background:#f9fafb; }
+    .row{ display:flex; gap:12px; align-items:flex-end }
+    .row>*{ flex:1 }
 
     /* Botões */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      background: linear-gradient(90deg, var(--brand2), var(--brand1));
+      background:linear-gradient(90deg,var(--brand2),var(--brand1));
       color:#fff; padding:12px 16px; border:0; border-radius:14px; cursor:pointer;
       font-weight:700; letter-spacing:.2px; box-shadow:0 8px 22px rgba(2,132,199,.25);
-      transition: transform .02s ease, filter .15s ease;
+      transition:transform .02s ease, filter .15s ease;
     }
-    .btn:active{transform: translateY(1px)}
-    .btn:disabled{opacity:.65; filter:saturate(.3); cursor:not-allowed}
-
-    .secondary{
-      background: #111827; color:#fff; box-shadow:0 8px 22px rgba(17,24,39,.25);
-    }
+    .btn:active{ transform:translateY(1px) }
+    .btn:disabled{ opacity:.65; filter:saturate(.3); cursor:not-allowed }
 
     /* Resultado */
     .result{
-      background:#f5f7fb; border:1px solid #e5e7eb;
-      border-radius:14px; padding:14px; min-height:260px; max-height:520px; overflow:auto;
+      background:#f5f7fb; border:1px solid #e5e7eb; border-radius:14px;
+      padding:14px; min-height:260px; max-height:520px; overflow:auto;
       color:#0f172a; white-space:pre-wrap; word-wrap:break-word;
     }
-    .hint{color:#6b7280; font-size:13px; margin-top:8px}
-    .foot-note{color:#6b7280; font-size:12px; margin-top:10px}
 
     /* Features */
     .features{display:grid; gap:16px; margin-top:22px}
     @media(min-width:900px){ .features{grid-template-columns:repeat(4,1fr)} }
     .feature{
       background:#fff; border:1px solid var(--stroke); border-radius:16px; padding:16px;
-      box-shadow: var(--shadow); text-align:center;
+      box-shadow:var(--shadow); text-align:center;
     }
     .feature h4{margin:8px 0 6px}
     .feature p{margin:0; color:#6b7280; font-size:14px}
-
-    /* Footer */
     footer{margin:22px 0 6px; text-align:center; color:#6b7280; font-size:12px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="icon" aria-hidden="true">
-        <!-- balança -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3v3M7 9l5-3 5 3"/>
-          <path d="M6 9l-3 6a4 4 0 0 0 8 0l-3-6M16 9l-3 6a4 4 0 0 0 8 0l-3-6"/>
-          <path d="M12 6v12M8 21h8"/>
-        </svg>
-      </div>
-      <div>
-        <h1>Tradutor Jurídico Simplificado</h1>
-        <p>Transforme textos jurídicos complexos em linguagem simples e acessível</p>
-      </div>
-    </div>
 
-    <!-- GRID -->
+  <!-- ======= TOPO INSTITUCIONAL ======= -->
+  <div class="header">
+    <div class="logos">
+      <img src="/static/logo-direito.png" alt="Curso de Direito — UNIFACISA" class="logo-dir">
+      <img src="/static/logo-nupraj.png" alt="NUPRAJ — Núcleo de Práticas Jurídicas" class="logo-nupraj">
+    </div>
+    <div class="banner">
+      <img src="/static/banner-juriboss.png" alt="JuRiboss — Líder em Tradução do Juridiquês">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- ======= GRID ======= -->
     <div class="grid">
+
       <!-- COL ESQUERDA -->
       <section class="card">
         <h2>Área de Entrada</h2>
 
-        <!-- Abas -->
-        <div class="tabs" role="tablist" aria-label="Modo de entrada">
-          <div id="tabText" class="tab active" role="tab" aria-selected="true" aria-controls="paneText">Digitar Texto</div>
-          <div id="tabFile" class="tab" role="tab" aria-selected="false" aria-controls="paneFile">Enviar Arquivo</div>
+        <div class="tabs" role="tablist">
+          <div id="tabText" class="tab active" aria-controls="paneText">Digitar Texto</div>
+          <div id="tabFile" class="tab" aria-controls="paneFile">Enviar Arquivo</div>
         </div>
 
-        <!-- Pane: Digitar -->
-        <div id="paneText" role="tabpanel" aria-labelledby="tabText">
+        <div id="paneText" role="tabpanel">
           <label for="textInput">Cole ou digite aqui o texto jurídico que deseja traduzir…</label>
-          <textarea id="textInput" placeholder="Ex.: &quot;Destarte, requer-se o acolhimento do pedido, nos termos do art. 421 do CC...&quot;"></textarea>
+          <textarea id="textInput" placeholder='Ex.: "Destarte, requer-se o acolhimento do pedido, nos termos do art. 421 do CC..."'></textarea>
         </div>
 
-        <!-- Pane: Arquivo -->
-        <div id="paneFile" class="hidden" role="tabpanel" aria-labelledby="tabFile">
+        <div id="paneFile" class="hidden" role="tabpanel">
           <label for="fileInput">Selecione um arquivo (.txt, .docx ou .pdf pesquisável)</label>
           <input id="fileInput" class="file" type="file" accept=".txt,.docx,.pdf"/>
-          <div class="hint">Se o PDF for escaneado (imagem), aplique OCR antes.</div>
+          <div style="color:#6b7280;font-size:13px;margin-top:6px">Se o PDF for escaneado (imagem), aplique OCR antes.</div>
         </div>
 
         <div class="row" style="margin-top:14px">
@@ -204,16 +149,9 @@
             </select>
           </div>
           <div>
-            <button id="btnTranslate" class="btn" title="Traduzir agora">
-              <!-- A ↔ B -->
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 7h14M5 17h14M10 7l-3 3 3 3M14 17l3-3-3-3"/>
-              </svg>
-              Traduzir Texto
-            </button>
+            <button id="btnTranslate" class="btn">Traduzir Texto</button>
           </div>
         </div>
-
       </section>
 
       <!-- COL DIREITA -->
@@ -230,22 +168,16 @@
             </select>
           </div>
           <div>
-            <button id="btnDownload" class="btn" disabled>
-              <!-- download -->
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <path d="M7 10l5 5 5-5"/>
-                <path d="M12 15V3"/>
-              </svg>
-              Baixar tradução
-            </button>
+            <button id="btnDownload" class="btn" disabled>Baixar tradução</button>
           </div>
         </div>
-        <div class="foot-note">Aviso: este conteúdo não substitui orientação jurídica profissional.</div>
+        <div style="color:#6b7280;font-size:12px;margin-top:10px">
+          Aviso: este conteúdo não substitui orientação jurídica profissional.
+        </div>
       </section>
     </div>
 
-    <!-- Features -->
+    <!-- ======= FEATURES ======= -->
     <div class="features">
       <div class="feature">
         <h4>Jargões Jurídicos</h4>
@@ -268,7 +200,7 @@
     <footer>© JuRiboss — Tradutor Jurídico Simplificado</footer>
   </div>
 
-  <!-- Form oculto para download -->
+  <!-- Form oculto p/ download -->
   <form id="hiddenDownload" method="post" action="/download" target="_blank" style="display:none">
     <input name="fmt" id="fmtHidden">
     <input name="level" id="levelHidden">
@@ -276,94 +208,56 @@
   </form>
 
   <script>
-    // util
-    const $ = (id)=>document.getElementById(id);
+    const $=(id)=>document.getElementById(id);
 
     // Abas
-    const tabText = $('tabText'), tabFile = $('tabFile');
-    const paneText = $('paneText'), paneFile = $('paneFile');
-    tabText.addEventListener('click', () => {
-      tabText.classList.add('active'); tabFile.classList.remove('active');
-      paneText.classList.remove('hidden'); paneFile.classList.add('hidden');
-    });
-    tabFile.addEventListener('click', () => {
-      tabFile.classList.add('active'); tabText.classList.remove('active');
-      paneFile.classList.remove('hidden'); paneText.classList.add('hidden');
-    });
+    const tabText=$('tabText'), tabFile=$('tabFile');
+    const paneText=$('paneText'), paneFile=$('paneFile');
+    tabText.addEventListener('click',()=>{tabText.classList.add('active');tabFile.classList.remove('active');paneText.classList.remove('hidden');paneFile.classList.add('hidden');});
+    tabFile.addEventListener('click',()=>{tabFile.classList.add('active');tabText.classList.remove('active');paneFile.classList.remove('hidden');paneText.classList.add('hidden');});
 
     // Controles
-    const textInput = $('textInput');
-    const fileInput = $('fileInput');
-    const levelSel = $('level');
-    const resultBox = $('resultBox');
-    const btnExample = $('btnExample');
-    const btnTranslate = $('btnTranslate');
-    const btnDownload = $('btnDownload');
-    const fmtSel = $('fmt');
+    const textInput=$('textInput'), fileInput=$('fileInput'), levelSel=$('level');
+    const resultBox=$('resultBox'), btnTranslate=$('btnTranslate'), btnDownload=$('btnDownload'), fmtSel=$('fmt');
 
     // Form oculto p/ download
-    const formHidden = $('hiddenDownload');
-    const fmtHidden = $('fmtHidden');
-    const levelHidden = $('levelHidden');
-    const textHidden = $('textHidden');
-
-    let lastResult = "";
+    const formHidden=$('hiddenDownload'), fmtHidden=$('fmtHidden'), levelHidden=$('levelHidden'), textHidden=$('textHidden');
+    let lastResult="";
 
     async function translate(){
-      btnTranslate.disabled = true;
-      btnTranslate.textContent = "Traduzindo...";
-      btnDownload.disabled = true;
-      resultBox.textContent = "Processando…";
+      btnTranslate.disabled=true; btnTranslate.textContent="Traduzindo...";
+      btnDownload.disabled=true; resultBox.textContent="Processando…";
 
-      const fd = new FormData();
-      fd.append('level', levelSel.value);
+      const fd=new FormData(); fd.append('level',levelSel.value);
+      const pasted=(textInput.value||"").trim(); const file=fileInput?.files?.[0];
 
-      const pasted = (textInput.value || "").trim();
-      const file = fileInput?.files?.[0];
-
-      if (tabText.classList.contains('active')) {
-        if (!pasted){ resultBox.textContent = "Cole um texto ou use a aba Enviar Arquivo."; resetBtn(); return; }
-        fd.append('text_input', pasted);
-      } else {
-        if (!file){ resultBox.textContent = "Selecione um arquivo (.txt, .docx, .pdf pesquisável)."; resetBtn(); return; }
-        fd.append('file', file);
+      if(tabText.classList.contains('active')){
+        if(!pasted){ resultBox.textContent="Cole um texto ou use a aba Enviar Arquivo."; resetBtn(); return; }
+        fd.append('text_input',pasted);
+      }else{
+        if(!file){ resultBox.textContent="Selecione um arquivo (.txt, .docx, .pdf pesquisável)."; resetBtn(); return; }
+        fd.append('file',file);
       }
 
       try{
-        const resp = await fetch('/translate', { method:'POST', body: fd });
-        const text = await resp.text();
-        lastResult = text;
-        resultBox.textContent = text;
-        btnDownload.disabled = false;
+        const resp=await fetch('/translate',{method:'POST',body:fd});
+        const text=await resp.text();
+        lastResult=text; resultBox.textContent=text; btnDownload.disabled=false;
       }catch(e){
-        resultBox.textContent = "Erro ao traduzir. Verifique sua conexão.";
-      }finally{
-        resetBtn();
-      }
+        resultBox.textContent="Erro ao traduzir. Verifique sua conexão.";
+      }finally{ resetBtn(); }
     }
 
-    function resetBtn(){
-      btnTranslate.disabled = false;
-      btnTranslate.textContent = "Traduzir Texto";
-    }
-
+    function resetBtn(){ btnTranslate.disabled=false; btnTranslate.textContent="Traduzir Texto"; }
     function doDownload(){
       if(!lastResult) return;
-      fmtHidden.value = fmtSel.value;
-      levelHidden.value = levelSel.value;
-      textHidden.value = lastResult;
+      fmtHidden.value=fmtSel.value; levelHidden.value=levelSel.value; textHidden.value=lastResult;
       formHidden.submit();
     }
 
-    btnTranslate.addEventListener('click', translate);
-    btnDownload.addEventListener('click', doDownload);
+    btnTranslate.addEventListener('click',translate);
+    btnDownload.addEventListener('click',doDownload);
   </script>
 </body>
 </html>
-
-
-
-
-
-
 
