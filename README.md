@@ -125,11 +125,24 @@ O código pode ser reutilizado com atribuição ao autor.
 * **Cherre Sade Bezerra Da Silva**
 * **Éllen Rafael Alves Guedes**
 * **Emilly Barros de Oliveira da Silva**
-* **Mariana de Lima Santos**
 * **Julyendreson Marques Ferreira de Sousa**
+* **Mariana de Lima Santos**
+
 
 Acadêmicos do 4° período do curso de Bacharelado em Direito (Noturno) da UNIFACISA.
 
-Contato: cherre.silva@maisunifacisa.com.br
+## 👨‍💻 **Contatos**
 
-Projeto desenvolvido em out./2025 no contexto da competência **“220063 - Projeto Integrador”** do curso de **Bacharelado em Direito – UNIFACISA**.
+* **entomologista@gmail.com**
+* **ellen.raguedes@gmail.com**
+* **emilly.boss15@gmail.com**
+* **julyendreson@gmail.com**
+* **mariana.santos@maisunifacisa.com.br**
+
+Projeto desenvolvido em out.-nov./2025 no contexto da competência **“220063 - Projeto Integrador”** do curso de **Bacharelado em Direito – UNIFACISA**.
+
+* **Orientação e codificação:** Prof. Gustavo Costa Vasconcelos (UNIFACISA) e ChatGPT (Inteligência Artificial da OpenAI).
+
+* **Natureza do projeto:** inovação tecnológica e social aplicada ao Direito.
+
+* **Objetivo institucional:** integrar teoria jurídica, tecnologia e cidadania.
