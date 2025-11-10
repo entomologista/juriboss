@@ -416,7 +416,6 @@ async def como_funciona(request: Request):
 async def equipe(request: Request):
     return templates.TemplateResponse("equipe.html", {"request": request})
 
-
 # rotas de diagnóstico (opcional)
 @app.get("/test", response_class=HTMLResponse)
 def test():
@@ -480,6 +479,7 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
 
 
