@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Como funciona o JuRiboss</title>
+  <link rel="stylesheet" href="/static/base.css">
+</head>
+<body class="jr-body">
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <div class="top-brand">JuRiboss <span>Tradutor Jurídico Simplificado</span></div>
+      <div class="top-nav-links">
+        <a href="/">Início</a>
+        <a href="/como-funciona">Como usar</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/equipe">Equipe</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="sub-header">
+    <h1>Como o JuRiboss funciona</h1>
+    <p>Entenda a tecnologia por trás da tradução do juridiquês.</p>
+  </header>
+
+  <main class="page-wrap">
+    <section class="info-section">
+      <h2>Fluxo de uso</h2>
+      <ol>
+        <li>O usuário cola o texto jurídico ou envia um arquivo (.txt, .docx ou .pdf pesquisável).</li>
+        <li>Escolhe o nível de linguagem: criança de 10 anos, ensino médio ou ensino superior.</li>
+        <li>O sistema envia o conteúdo para a IA ou aciona o mecanismo local de simplificação.</li>
+        <li>O resultado é exibido na tela e pode ser baixado em DOCX ou PDF.</li>
+      </ol>
+    </section>
+
+    <section class="info-section">
+      <h2>Tradução com Inteligência Artificial</h2>
+      <p>
+        Quando conectado à API de IA, o JuRiboss utiliza modelos avançados de linguagem para interpretar o texto
+        jurídico, identificar termos técnicos, contextos relevantes e construir uma nova versão em português claro,
+        adequada ao nível escolhido pelo usuário, preservando o sentido jurídico original. :contentReference[oaicite:0]{index=0}
+      </p>
+    </section>
+
+    <section class="info-section">
+      <h2>Mecanismo de fallback (modo local)</h2>
+      <p>
+        Se houver falha na comunicação com a IA (sem internet, sem créditos ou erro na API), o JuRiboss aciona
+        automaticamente um modo de simplificação local. Nesse modo, o sistema aplica regras pré-programadas para
+        reconhecer jargões e siglas, substituindo-os por expressões simples e explicativas. Assim, mesmo em cenário
+        limitado, o usuário continua recebendo uma versão mais compreensível do texto. :contentReference[oaicite:1]{index=1}
+      </p>
+      <p>
+        Esse fallback não é tão sofisticado quanto a IA completa, mas garante robustez e continuidade do serviço —
+        algo essencial em um projeto voltado ao atendimento do público.
+      </p>
+    </section>
+  </main>
+
+  <footer class="jr-footer">
+    © JuRiboss — Tradutor Jurídico Simplificado
+  </footer>
+</body>
+</html>
