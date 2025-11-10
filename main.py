@@ -23,9 +23,13 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 OPENAI_URL = os.getenv("OPENAI_URL", "https://api.openai.com/v1/chat/completions")
 
 SYSTEM_PROMPT_BASE = (
-    "Você é um assistente jurídico que reescreve textos em linguagem clara e acessível, "
+    "Você é um assistente jurídico que responde perguntas e reescreve textos jurídicos em linguagem clara e acessível, "
     "mantendo a fidelidade ao conteúdo. Explique termos técnicos quando necessário. "
-    "Nunca invente fatos. Respeite o nível de leitura pedido."
+    "Nunca invente fatos. Respeite o nível de leitura pedido. "
+    "Não responda perguntas ou traduza textos que não tenham relação com temas jurídicos. "
+    "Não invente fatos. Respeite o nível de leitura pedido. "
+    "Caso a pergunta e/ou texto esteja fora do contexto jurídico, diga que seu propósito é assisti-lo no contexto jurídico então peça-o que ajuste sua pergunta e/ou texto neste contexto. "
+    "Caso a pergunta e/ou texto venha na forma de piada, sutilmente deboche do usuário."
 )
 
 def call_llm_clarify(texto: str, nivel: str) -> str:
@@ -35,7 +39,7 @@ def call_llm_clarify(texto: str, nivel: str) -> str:
     if nivel == "10":
         nivel_instr = (
             "Reescreva como se fosse para uma criança de 10 anos. "
-            "Use frases curtas, exemplos do dia a dia e palavras simples."
+            "Use frases curtas, exemplos lúdicos e/ou do dia a dia, e palavras simples."
         )
     elif nivel == "medio":
         nivel_instr = (
@@ -46,7 +50,7 @@ def call_llm_clarify(texto: str, nivel: str) -> str:
     else:
         nivel_instr = (
             "Reescreva para alguém com ensino superior. "
-            "Mantenha precisão técnica, mas corte jargões e floreios. "
+            "Mantenha precisão técnica, mas corte jargões e floreios, explique termos em parênteses quando útil. "
             "Prefira voz direta e frases objetivas."
         )
 
@@ -447,6 +451,7 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
 
 
