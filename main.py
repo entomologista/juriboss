@@ -387,6 +387,35 @@ def make_pdf(text: str) -> bytes:
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
+app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/sobre", response_class=HTMLResponse)
+async def sobre(request: Request):
+    return templates.TemplateResponse("sobre.html", {"request": request})
+
+
+@app.get("/como-funciona", response_class=HTMLResponse)
+async def como_funciona(request: Request):
+    return templates.TemplateResponse("como-funciona.html", {"request": request})
+
+
+@app.get("/equipe", response_class=HTMLResponse)
+async def equipe(request: Request):
+    return templates.TemplateResponse("equipe.html", {"request": request})
+
 
 # rotas de diagnóstico (opcional)
 @app.get("/test", response_class=HTMLResponse)
@@ -451,6 +480,7 @@ def download(fmt: str = Form(...), level: str = Form(...), text: str = Form(...)
         )
     else:
         return PlainTextResponse("Formato inválido (use docx ou pdf).", status_code=400)
+
 
 
 
