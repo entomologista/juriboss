@@ -16,378 +16,74 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;}
-
     body{
       margin:0;
       font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
       min-height:100vh;
       color:#111827;
-      padding-top:64px; /* espaço para o menu fixo */
-
-      /* Fundo contínuo e suave:
-         - mancha roxa no topo direito (conecta com o banner)
-         - tons escuros no restante da página
-      */
+      padding-top:64px;
       background:
         radial-gradient(1200px 700px at 100% 0, #312e81 0%, rgba(49,46,129,0) 70%),
         radial-gradient(900px 600px at 0 0, #111827 0%, rgba(17,24,39,0) 70%),
         linear-gradient(180deg, #020617 0%, #020817 40%, #020817 100%);
       background-attachment:fixed;
     }
-
-.level-cards {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-.level-card {
-  flex: 1;
-  min-width: 130px;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 2px 6px rgba(15,23,42,0.05);
-}
-
-.level-card h4 {
-  margin: 0;
-  font-size: 16px;
-  color: #1e3a8a;
-}
-
-.level-card p {
-  margin: 4px 0 0;
-  font-size: 13px;
-  color: #475569;
-}
-
-.level-card:hover {
-  background: #eff6ff;
-  border-color: #3b82f6;
-  box-shadow: 0 4px 12px rgba(59,130,246,0.2);
-}
-
-.level-card.active {
-  background: #dbeafe;
-  border-color: #2563eb;
-  box-shadow: 0 6px 18px rgba(37,99,235,0.25);
-}    
-    .wrap{
-      max-width:1180px;
-      margin:0 auto;
-      padding:24px 16px 40px;
-    }
-
-    /* ======= MENU FIXO ======= */
+    .wrap{max-width:1180px;margin:0 auto;padding:24px 16px 40px;}
     .top-nav{
-      position:fixed;
-      top:0;left:0;right:0;
-      z-index:60;
+      position:fixed;top:0;left:0;right:0;z-index:60;
       background:rgba(2,8,23,0.96);
       backdrop-filter:blur(10px);
       box-shadow:0 4px 18px rgba(0,0,0,0.4);
-      display:flex;
-      justify-content:center;
+      display:flex;justify-content:center;
     }
     .top-nav-inner{
-      max-width:1180px;
-      width:100%;
-      padding:10px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      color:#e5e7eb;
-      font-size:14px;
+      max-width:1180px;width:100%;padding:10px 16px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      color:#e5e7eb;font-size:14px;
     }
-    .top-brand{
-      font-weight:700;
-      letter-spacing:.3px;
-      display:flex;
-      align-items:center;
-      gap:6px;
-    }
-    .top-brand span{
-      font-size:11px;
-      font-weight:400;
-      color:#9ca3af;
-    }
-    .top-nav-links{
-      display:flex;
-      gap:18px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    .top-nav-links a{
-      color:#cbd5f5;
-      text-decoration:none;
-      font-weight:500;
-      padding:4px 10px;
-      border-radius:999px;
-      transition:background .15s ease,color .15s ease;
-    }
-    .top-nav-links a:hover{
-      background:rgba(148,163,253,0.14);
-      color:#fff;
-    }
-
-    @media(max-width:640px){
-      .top-brand{font-size:13px;}
-      .top-brand span{display:none;}
-    }
-
-    /* ======= HEADER (LOGOS + BANNER) ======= */
-    .header{
-      width:100%;
-      padding:18px 0 0;
-      /* leve fade para o conteúdo abaixo */
-      background:linear-gradient(
-        180deg,
-        rgba(2,8,23,1) 0%,
-        rgba(2,8,23,0.96) 55%,
-        rgba(2,8,23,0) 100%
-      );
-    }
-
-    .logos{
-      max-width:1180px;
-      margin:0 auto 8px;
-      padding:0 16px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:52px;
-      flex-wrap:wrap;
-    }
-
-    .logo-dir,
-    .logo-nupraj{
-      height:64px;
-      max-width:260px;
-      object-fit:contain;
-      filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));
-    }
-
-    .logo-nupraj{
-      margin-top:2px;
-    }
-
-    .banner{
-      width:100%;
-      display:flex;
-      justify-content:center;
-      padding:0 16px 10px;
-    }
-
-    .banner img{
-      width:100%;
-      max-width:1180px;
-      height:auto;
-      display:block;
-      /* sem object-fit: cover → não corta o banner */
-      box-shadow:0 6px 24px rgba(0,0,0,0.35);
-      border-radius:0;
-    }
-
-    /* ======= GRID PRINCIPAL ======= */
-    .grid{
-      display:grid;
-      gap:20px;
-      margin-top:24px;
-      justify-content:center;
-      grid-template-columns:1fr;
-    }
-    @media (min-width:1000px){
-      .grid{
-        grid-template-columns:1fr 1fr;
-        max-width:1180px;
-        margin:24px auto 0;
-      }
-    }
-
-    .card{
-      background:#fff;
-      border:1px solid var(--stroke);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      padding:18px 18px 20px;
-      height:100%;
-    }
-    h2{
-      margin:0 0 10px 0;
-      color:#0f172a;
-    }
-
-    /* Abas */
-    .tabs{
-      display:flex;
-      gap:18px;
-      border-bottom:1px solid var(--stroke);
-      margin:4px 0 12px;
-    }
-    .tab{
-      padding:10px 2px 12px;
-      font-weight:600;
-      color:#64748b;
-      cursor:pointer;
-      border-bottom:3px solid transparent;
-      user-select:none;
-    }
-    .tab.active{
-      color:#111827;
-      border-bottom-color:var(--brand1);
-    }
-    .hidden{display:none;}
-
-    /* Inputs */
-    label{
-      display:block;
-      margin:8px 0 6px;
-      color:#374151;
-      font-weight:600;
-    }
-    textarea,
-    input[type="file"],
-    select,
-    button{
-      width:100%;
-      font:inherit;
-      border-radius:12px;
-      border:1px solid #d1d5db;
-      background:#fff;
-      color:#111827;
-    }
-    textarea{
-      min-height:170px;
-      padding:12px 12px;
-      resize:vertical;
-      outline:0;
-    }
-    textarea::placeholder{
-      color:#9ca3af;
-    }
-    .file{
-      padding:12px;
-      border:2px dashed #d1d5db;
-      background:#f9fafb;
-    }
-    .row{
-      display:flex;
-      gap:12px;
-      align-items:flex-end;
-    }
+    .top-brand{font-weight:700;letter-spacing:.3px;display:flex;align-items:center;gap:6px;}
+    .top-brand span{font-size:11px;font-weight:400;color:#9ca3af;}
+    .top-nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+    .top-nav-links a{color:#cbd5f5;text-decoration:none;font-weight:500;padding:4px 10px;border-radius:999px;transition:background .15s ease,color .15s ease;}
+    .top-nav-links a:hover{background:rgba(148,163,253,0.14);color:#fff;}
+    @media(max-width:640px){.top-brand{font-size:13px;}.top-brand span{display:none;}}
+    .header{width:100%;padding:18px 0 0;background:linear-gradient(180deg,rgba(2,8,23,1) 0%,rgba(2,8,23,0.96) 55%,rgba(2,8,23,0) 100%);}
+    .logos{max-width:1180px;margin:0 auto 8px;padding:0 16px;display:flex;justify-content:center;align-items:center;gap:52px;flex-wrap:wrap;}
+    .logo-dir,.logo-nupraj{height:64px;max-width:260px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));}
+    .logo-nupraj{margin-top:2px;}
+    .banner{width:100%;display:flex;justify-content:center;padding:0 16px 10px;}
+    .banner img{width:100%;max-width:1180px;height:auto;display:block;box-shadow:0 6px 24px rgba(0,0,0,0.35);border-radius:0;}
+    .grid{display:grid;gap:20px;margin-top:24px;justify-content:center;grid-template-columns:1fr;}
+    @media (min-width:1000px){.grid{grid-template-columns:1fr 1fr;max-width:1180px;margin:24px auto 0;}}
+    .card{background:#fff;border:1px solid var(--stroke);border-radius:18px;box-shadow:var(--shadow);padding:18px 18px 20px;height:100%;}
+    h2{margin:0 0 10px 0;color:#0f172a;}
+    label{display:block;margin:8px 0 6px;color:#374151;font-weight:600;}
+    textarea,input[type="file"],button{width:100%;font:inherit;border-radius:12px;border:1px solid #d1d5db;background:#fff;color:#111827;}
+    textarea{min-height:170px;padding:12px 12px;resize:vertical;outline:0;}
+    textarea::placeholder{color:#9ca3af;}
+    .file{padding:12px;border:2px dashed #d1d5db;background:#f9fafb;}
+    .row{display:flex;gap:12px;align-items:flex-end;}
     .row>*{flex:1;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(90deg,var(--brand2),var(--brand1));color:#fff;padding:12px 16px;border:0;border-radius:14px;cursor:pointer;font-weight:700;letter-spacing:.2px;box-shadow:0 8px 22px rgba(2,132,199,.25);transition:transform .02s ease, filter .15s ease;}
+    .btn:active{transform:translateY(1px);}
+    .btn:disabled{opacity:.65;filter:saturate(.3);cursor:not-allowed;}
+    .result{background:#f5f7fb;border:1px solid #e5e7eb;border-radius:14px;padding:14px;min-height:260px;max-height:520px;overflow:auto;color:#0f172a;white-space:pre-wrap;word-wrap:break-word;}
+    footer{margin:22px 0 6px;text-align:center;color:#6b7280;font-size:12px;}
 
-    /* Botões */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      background:linear-gradient(90deg,var(--brand2),var(--brand1));
-      color:#fff;
-      padding:12px 16px;
-      border:0;
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:700;
-      letter-spacing:.2px;
-      box-shadow:0 8px 22px rgba(2,132,199,.25);
-      transition:transform .02s ease, filter .15s ease;
-    }
-    .btn:active{
-      transform:translateY(1px);
-    }
-    .btn:disabled{
-      opacity:.65;
-      filter:saturate(.3);
-      cursor:not-allowed;
-    }
-
-    /* Resultado */
-    .result{
-      background:#f5f7fb;
-      border:1px solid #e5e7eb;
-      border-radius:14px;
-      padding:14px;
-      min-height:260px;
-      max-height:520px;
-      overflow:auto;
-      color:#0f172a;
-      white-space:pre-wrap;
-      word-wrap:break-word;
-    }
-
-    /* Features */
-    .features{
-      display:grid;
-      gap:16px;
-      margin-top:22px;
-    }
-    @media(min-width:900px){
-      .features{grid-template-columns:repeat(4,1fr);}
-    }
-    .feature{
-      background:#fff;
-      border:1px solid var(--stroke);
-      border-radius:16px;
-      padding:16px;
-      box-shadow:var(--shadow);
-      text-align:center;
-    }
-    .feature h4{margin:8px 0 6px;}
-    .feature p{
-      margin:0;
-      color:#6b7280;
-      font-size:14px;
-    }
-
-    /* Info sections */
-    .info-section{
-      background:#fff;
-      border:1px solid var(--stroke);
-      border-radius:18px;
-      box-shadow:var(--shadow);
-      padding:24px 28px;
-      margin:28px auto;
-      max-width:1180px;
-      color:#0f172a;
-      line-height:1.6;
-    }
-    .info-section h2{
-      color:var(--brand2);
-      margin:0 0 10px 0;
-    }
-    .info-section ol{
-      margin:12px 0 12px 20px;
-    }
-    .info-section li{
-      margin-bottom:6px;
-    }
-
-    footer{
-      margin:22px 0 6px;
-      text-align:center;
-      color:#6b7280;
-      font-size:12px;
-    }
+    /* Cards de nível */
+    .level-section label{margin-bottom:4px;}
+    .level-cards{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+    .level-card{flex:1;min-width:130px;background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:10px;text-align:center;cursor:pointer;transition:all 0.25s ease;box-shadow:0 2px 6px rgba(15,23,42,0.05);}
+    .level-card h4{margin:0;font-size:16px;color:#1e3a8a;}
+    .level-card p{margin:4px 0 0;font-size:13px;color:#475569;}
+    .level-card:hover{background:#eff6ff;border-color:#3b82f6;box-shadow:0 4px 12px rgba(59,130,246,0.2);}
+    .level-card.active{background:#dbeafe;border-color:#2563eb;box-shadow:0 6px 18px rgba(37,99,235,0.25);}
   </style>
 </head>
 <body>
-
-  <!-- MENU FIXO -->
   <nav class="top-nav">
     <div class="top-nav-inner">
-      <div class="top-brand">
-        JuRiboss
-        <span>Tradutor Jurídico Simplificado</span>
-      </div>
+      <div class="top-brand">JuRiboss <span>Tradutor Jurídico Simplificado</span></div>
       <div class="top-nav-links">
         <a href="/">Início</a>
         <a href="/como-funciona">Como usar</a>
@@ -397,7 +93,6 @@
     </div>
   </nav>
 
-  <!-- TOPO: LOGOS + BANNER -->
   <div class="header" id="inicio">
     <div class="logos">
       <img src="/static/logo-direito.png" alt="Curso de Direito — UNIFACISA" class="logo-dir">
@@ -409,30 +104,13 @@
   </div>
 
   <div class="wrap">
-    <!-- GRID PRINCIPAL -->
     <div class="grid">
-      <!-- Área de Entrada -->
       <section class="card">
         <h2>Área de Entrada</h2>
-
-        <div class="tabs" role="tablist">
-          <div id="tabText" class="tab active" aria-controls="paneText">Digitar Texto</div>
-          <div id="tabFile" class="tab" aria-controls="paneFile">Enviar Arquivo</div>
-        </div>
-
-        <div id="paneText" role="tabpanel">
-          <label for="textInput">Cole ou digite aqui o texto jurídico que deseja traduzir…</label>
-          <textarea id="textInput" placeholder='Ex.: "Destarte, requer-se o acolhimento do pedido, nos termos do art. 421 do CC..."'></textarea>
-        </div>
-
-        <div id="paneFile" class="hidden" role="tabpanel">
-          <label for="fileInput">Selecione um arquivo (.txt, .docx ou .pdf pesquisável)</label>
-          <input id="fileInput" class="file" type="file" accept=".txt,.docx,.pdf"/>
-          <div style="color:#6b7280;font-size:13px;margin-top:6px">
-            Se o PDF for escaneado (imagem), aplique OCR antes.
-          </div>
-        </div>
-
+        <label for="textInput">Cole ou digite aqui o texto jurídico que deseja traduzir…</label>
+        <textarea id="textInput" placeholder='Ex.: "Destarte, requer-se o acolhimento do pedido..."'></textarea>
+        <label for="fileInput">Ou selecione um arquivo (.txt, .docx, .pdf)</label>
+        <input id="fileInput" class="file" type="file" accept=".txt,.docx,.pdf"/>
         <div class="row" style="margin-top:14px">
           <div class="level-section">
             <label>Nível de linguagem</label>
@@ -451,21 +129,13 @@
               </div>
             </div>
           </div>
-
-          <div>
-            <button id="btnTranslate" class="btn">Traduzir Texto</button>
-          </div>
+          <div><button id="btnTranslate" class="btn">Traduzir Texto</button></div>
         </div>
-
       </section>
 
-      <!-- Texto Simplificado -->
       <section class="card">
         <h2>Texto Simplificado</h2>
-        <div id="resultBox" class="result" aria-live="polite">
-          O texto traduzido aparecerá aqui…
-        </div>
-
+        <div id="resultBox" class="result" aria-live="polite">O texto traduzido aparecerá aqui…</div>
         <div class="row" style="margin-top:14px">
           <div>
             <label for="fmt">Formato</label>
@@ -474,69 +144,14 @@
               <option value="pdf">PDF</option>
             </select>
           </div>
-          <div>
-            <button id="btnDownload" class="btn" disabled>Baixar tradução</button>
-          </div>
+          <div><button id="btnDownload" class="btn" disabled>Baixar tradução</button></div>
         </div>
-        <div style="color:#6b7280;font-size:12px;margin-top:10px">
-          Aviso: este conteúdo não substitui orientação jurídica profissional.
-        </div>
+        <div style="color:#6b7280;font-size:12px;margin-top:10px">Aviso: este conteúdo não substitui orientação jurídica profissional.</div>
       </section>
     </div>
-
-    <!-- FEATURES -->
-    <div class="features">
-      <div class="feature">
-        <h4>Jargões Jurídicos</h4>
-        <p>Traduzimos termos como “data venia” e “destarte” para linguagem simples.</p>
-      </div>
-      <div class="feature">
-        <h4>Múltiplos Formatos</h4>
-        <p>Funciona com PDF pesquisável, Word, TXT e texto colado diretamente.</p>
-      </div>
-      <div class="feature">
-        <h4>Privacidade</h4>
-        <p>Seus documentos não são armazenados no servidor.</p>
-      </div>
-      <div class="feature">
-        <h4>Acessível</h4>
-        <p>Níveis de leitura: criança, ensino médio e superior.</p>
-      </div>
-    </div>
-
-    <!-- COMO USAR -->
-    <section class="info-section" id="como-usar">
-      <h2>Como usar o JuRiboss</h2>
-      <p>O JuRiboss foi projetado para ser simples e intuitivo. Para obter o melhor resultado:</p>
-      <ol>
-        <li>Escolha entre <strong>Digitar Texto</strong> ou <strong>Enviar Arquivo</strong> (.txt, .docx ou .pdf pesquisável).</li>
-        <li>Selecione o <strong>nível de linguagem</strong>: criança de 10 anos, ensino médio ou ensino superior.</li>
-        <li>Clique em <strong>Traduzir Texto</strong> e aguarde alguns instantes.</li>
-        <li>O texto traduzido aparecerá no painel direito. Escolha o formato desejado (DOCX ou PDF) e clique em <strong>Baixar tradução</strong>.</li>
-      </ol>
-      <p>O sistema converte expressões jurídicas complexas em linguagem clara, preservando o sentido jurídico essencial.</p>
-    </section>
-
-    <!-- SOBRE -->
-    <section class="info-section" id="sobre">
-      <h2>Sobre o Sistema</h2>
-      <p>O <strong>JuRiboss</strong> (de “Juris” + “Ribossomo” + “Boss”) é um tradutor jurídico inteligente que transforma o chamado <em>juridiquês</em> em linguagem simples e acessível. Inspirado no ribossomo — responsável pela “tradução” das informações genéticas — o sistema realiza a ponte entre a linguagem técnica do Direito e o português do dia a dia.</p>
-      <p>Com apoio de Inteligência Artificial, o JuRiboss identifica termos, estruturas e expressões típicas de documentos jurídicos e gera uma versão adaptada ao público leigo, sem perder a precisão das informações. O objetivo é democratizar o acesso à informação jurídica, reduzir barreiras linguísticas e fortalecer o exercício da cidadania.</p>
-      <p>O projeto também ilustra como a tecnologia pode ser usada de forma ética e socialmente responsável, integrando Direito, inovação e inclusão.</p>
-    </section>
-
-    <!-- EQUIPE -->
-    <section class="info-section" id="equipe">
-      <h2>Equipe e Contexto</h2>
-      <p>O JuRiboss foi desenvolvido por <strong>alunos do curso de Bacharelado em Direito da UNIFACISA</strong>, vinculados ao <strong>Núcleo de Práticas Jurídicas (NUPRAJ)</strong>, no âmbito da disciplina <em>220063 — Projeto Integrador - Noite</em>.</p>
-      <p>O time responsável não possui formação prévia em computação. Todo o desenvolvimento técnico — concepção do backend, interface, ajustes de usabilidade e implantação em nuvem — foi realizado com apoio da <strong>Inteligência Artificial (ChatGPT)</strong>, utilizada como ferramenta de estudo, mentoria e geração de código.</p>
-      <p>Assim, o JuRiboss não é apenas uma solução digital para tradução do juridiquês, mas também uma experiência pedagógica inovadora que demonstra o potencial da IA para empoderar estudantes de Direito na criação de tecnologias acessíveis à sociedade.</p>
-    </section>
-
     <footer>© JuRiboss — Tradutor Jurídico Simplificado</footer>
   </div>
 
-  <!-- FORM OCULTO PARA DOWNLOAD -->
   <form id="hiddenDownload" method="post" action="/download" target="_blank" style="display:none">
     <input name="fmt" id="fmtHidden">
     <input name="level" id="levelHidden">
@@ -545,96 +160,54 @@
 
   <script>
     const $ = id => document.getElementById(id);
-
-    // Tabs
-    const tabText = $('tabText');
-    const tabFile = $('tabFile');
-    const paneText = $('paneText');
-    const paneFile = $('paneFile');
-
-    tabText.addEventListener('click', () => {
-      tabText.classList.add('active');
-      tabFile.classList.remove('active');
-      paneText.classList.remove('hidden');
-      paneFile.classList.add('hidden');
-    });
-
-    tabFile.addEventListener('click', () => {
-      tabFile.classList.add('active');
-      tabText.classList.remove('active');
-      paneFile.classList.remove('hidden');
-      paneText.classList.add('hidden');
-    });
-
-    // Inputs
     const textInput = $('textInput');
     const fileInput = $('fileInput');
-    const levelSel = $('level');
     const resultBox = $('resultBox');
     const btnTranslate = $('btnTranslate');
     const btnDownload = $('btnDownload');
     const fmtSel = $('fmt');
-
-    // Hidden form
-    const formHidden = $('hiddenDownload');
     const fmtHidden = $('fmtHidden');
     const levelHidden = $('levelHidden');
     const textHidden = $('textHidden');
-
     let lastResult = "";
+    let selectedLevel = 'crianca';
+
+    // Seleção de nível
+    document.querySelectorAll('.level-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        selectedLevel = card.getAttribute('data-value');
+      });
+    });
 
     async function translate() {
       btnTranslate.disabled = true;
       btnTranslate.textContent = "Traduzindo...";
       btnDownload.disabled = true;
       resultBox.textContent = "Processando…";
-
       const fd = new FormData();
-      fd.append('level', levelSel.value);
-
+      fd.append('level', selectedLevel);
       const pasted = (textInput.value || "").trim();
       const file = fileInput?.files?.[0];
-
-      if (tabText.classList.contains('active')) {
-        if (!pasted) {
-          resultBox.textContent = "Cole um texto ou use a aba Enviar Arquivo.";
-          resetBtn();
-          return;
-        }
-        fd.append('text_input', pasted);
-      } else {
-        if (!file) {
-          resultBox.textContent = "Selecione um arquivo (.txt, .docx, .pdf pesquisável).";
-          resetBtn();
-          return;
-        }
-        fd.append('file', file);
-      }
-
+      if (pasted) fd.append('text_input', pasted);
+      else if (file) fd.append('file', file);
+      else { resultBox.textContent = "Insira um texto ou arquivo."; resetBtn(); return; }
       try {
         const resp = await fetch('/translate', { method: 'POST', body: fd });
         const text = await resp.text();
-        lastResult = text;
-        resultBox.textContent = text;
-        btnDownload.disabled = false;
-      } catch (e) {
-        resultBox.textContent = "Erro ao traduzir. Verifique sua conexão.";
-      } finally {
-        resetBtn();
-      }
+        lastResult = text; resultBox.textContent = text; btnDownload.disabled = false;
+      } catch { resultBox.textContent = "Erro ao traduzir. Verifique a conexão."; }
+      resetBtn();
     }
 
-    function resetBtn() {
-      btnTranslate.disabled = false;
-      btnTranslate.textContent = "Traduzir Texto";
-    }
-
+    function resetBtn() { btnTranslate.disabled = false; btnTranslate.textContent = "Traduzir Texto"; }
     function doDownload() {
       if (!lastResult) return;
       fmtHidden.value = fmtSel.value;
-      levelHidden.value = levelSel.value;
+      levelHidden.value = selectedLevel;
       textHidden.value = lastResult;
-      formHidden.submit();
+      document.getElementById('hiddenDownload').submit();
     }
 
     btnTranslate.addEventListener('click', translate);
@@ -642,5 +215,3 @@
   </script>
 </body>
 </html>
-
-
