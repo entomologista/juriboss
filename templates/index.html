@@ -391,18 +391,29 @@
         </div>
 
         <div class="row" style="margin-top:14px">
-          <div>
-            <label for="level">Nível de linguagem</label>
-            <select id="level">
-              <option value="10">Criança de 10 anos</option>
-              <option value="medio" selected>Ensino médio completo</option>
-              <option value="superior">Ensino superior completo</option>
-            </select>
+          <div class="level-section">
+            <label>Nível de linguagem</label>
+            <div class="level-cards">
+              <div class="level-card active" data-value="crianca">
+                <h4>👧 Criança</h4>
+                <p>Linguagem simples, clara e divertida.</p>
+              </div>
+              <div class="level-card" data-value="jovem">
+                <h4>🧑 Jovem</h4>
+                <p>Equilíbrio entre clareza e leve formalidade.</p>
+              </div>
+              <div class="level-card" data-value="adulto">
+                <h4>👨 Adulto</h4>
+                <p>Estilo mais técnico, próximo do jurídico original.</p>
+              </div>
+            </div>
           </div>
+
           <div>
             <button id="btnTranslate" class="btn">Traduzir Texto</button>
           </div>
         </div>
+
       </section>
 
       <!-- Texto Simplificado -->
@@ -588,4 +599,5 @@
   </script>
 </body>
 </html>
+
 
